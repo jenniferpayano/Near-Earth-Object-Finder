@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-//import { earthObjectShow } from '../../api/EarthObject'
+import { earthObjectShow } from '../../api/EarthObject'
 import  UserForm  from '../shared/UserInput.js' 
 
 class Home extends Component {
@@ -24,16 +24,16 @@ class Home extends Component {
     }
       
       onSubmit = async(event) => { 
-          console.log(this.state.earthObjects)
         event.preventDefault()
-        //   earthObjectShow(this.state.earthObjects)
-        //   .then(res => {
-        //       console.log(res.data.near_earth_objects)
-        //       this.setState({earthObjects: res.data.near_earth_objects})
-        //   })
-        //   .catch (err => {
-        //       console.log(err)
-        //   })
+          earthObjectShow(this.state.earthObjects)
+          .then(res => {
+              console.log(res.data.near_earth_objects)
+            //  console.log(res.data.near_earth_objects)
+            //  this.setState({earthObjects: res.data.near_earth_objects})
+          })
+          .catch (err => {
+              console.log(err)
+          })
       }
       render () {
           const { earthObjects } = this.state
