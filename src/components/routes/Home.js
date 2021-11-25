@@ -1,32 +1,53 @@
 import React, { Component } from 'react'
-import { earthObjectShow } from '../../api/EarthObject'
+//import { earthObjectShow } from '../../api/EarthObject'
+import  UserForm  from '../shared/UserInput.js' 
 
 class Home extends Component {
     constructor () {
         super()
     
         this.state = {
-          earthObjects: null
+          earthObjects: {
+              startDate: '',
+              endDate: ''
+          }
         }
       }
-
-      componentDidMount () {
-          earthObjectShow()
-          .then(res => {
-              console.log(res.data.near_earth_objects)
-              this.setState({earthObjects: res.data.near_earth_objects})
-          })
+      handleChange = (event) => {
+        // create an object with the key/value of the field I'm typing in
+        const updatedField = {
+          [event.target.name]: event.target.value
+        }
+        const editedObject= Object.assign(this.state.earthObjects, updatedField)
+        this.setState({ earthObjects: editedObject })
+        //console.log(this.earthObjects)
+    }
+      
+      onSubmit = async(event) => { 
+          console.log(this.state.earthObjects)
+        event.preventDefault()
+        //   earthObjectShow(this.state.earthObjects)
+        //   .then(res => {
+        //       console.log(res.data.near_earth_objects)
+        //       this.setState({earthObjects: res.data.near_earth_objects})
+        //   })
+        //   .catch (err => {
+        //       console.log(err)
+        //   })
       }
       render () {
           const { earthObjects } = this.state
           let earthObjectJsx 
-        console.log(earthObjects)
+        //console.log(earthObjects)
           earthObjectJsx = (
             <div>
             <br/>
-            <h1> LIST </h1>
-            
-                { earthObjects}
+            <h1> New Earth Object </h1>
+            <UserForm
+            earthObjects = {earthObjects}
+            handleSubmit = {this.onSubmit}
+            handleChange= {this.handleChange}
+            />
           </div>
 
           )
