@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { earthObjectShow } from '../../api/EarthObject'
-import  UserForm  from '../shared/UserInput.js' 
+import  UserForm  from '../shared/UserInput.js'
+
 
 class Home extends Component {
     constructor () {
@@ -9,7 +10,10 @@ class Home extends Component {
         this.state = {
           earthObjects: {
               startDate: '',
-              endDate: ''
+              endDate: '',
+              asteroids : [
+              ],
+              anyasteroids: false
           }
         }
       }
@@ -24,21 +28,89 @@ class Home extends Component {
     }
       
       onSubmit = async(event) => { 
+          
         event.preventDefault()
+    
           earthObjectShow(this.state.earthObjects)
           .then(res => {
               console.log(res.data.near_earth_objects)
-            //  console.log(res.data.near_earth_objects)
-            //  this.setState({earthObjects: res.data.near_earth_objects})
+              let neoFeedData = res.data.near_earth_objects
+              let newAsteroids = []
+              Object.keys(neoFeedData).forEach((date)=>{
+                neoFeedData[date].forEach((asteroid) =>{
+                  newAsteroids.push({
+                    Number:newAsteroids.length+1 ,
+                    Id: asteroid.id,
+                    Name: asteroid.name,
+                    Date: asteroid.close_approach_data[0].close_approach_date,
+                    Diameter: parseInt(asteroid.estimated_diameter.feet.estimated_diameter_min.toFixed(0) + asteroid.estimated_diameter.feet.estimated_diameter_max.toFixed(0) / 2 ),
+                    Distance: parseInt(asteroid.close_approach_data[0].miss_distance.miles),
+                    Hazardous: asteroid.is_potentially_hazardous_asteroid.toString(),
+                    Velocity: parseInt(asteroid.close_approach_data[0].relative_velocity.miles_per_hour),
+                    
+
+                  })
+                })
+              })
+              //console.log(newAsteroids)
+              this.setState({asteroids: newAsteroids})
+        
           })
           .catch (err => {
               console.log(err)
           })
       }
+      
       render () {
           const { earthObjects } = this.state
+        earthObjects.asteroids = this.state.asteroids
+          console.log(earthObjects);
           let earthObjectJsx 
-        //console.log(earthObjects)
+          if(earthObjects.asteroids !== undefined){
+              earthObjects.anyasteroids = true;
+          }
+if(earthObjects.anyasteroids) {
+    const TableComponent = ({
+    data
+  }) => {
+    let headings = Object.keys(data[0]);
+    return (
+      <table className='table table-bordered'>
+        <thead>
+          <tr>
+            {
+              headings.map(heading => <th>{heading}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+              data.map(item => 
+                <tr>
+                 {
+                    headings.map(heading => <td>{item[heading]}</td>) 
+                 }
+                </tr>
+              )
+          }
+        </tbody>
+      </table>
+    );
+  }
+earthObjectJsx = (
+    <div>
+          <h1> New Earth Object </h1>
+            <UserForm
+            earthObjects = {earthObjects}
+            handleSubmit = {this.onSubmit}
+            handleChange= {this.handleChange}
+            />
+            <h3>Total Number of objects: {earthObjects.asteroids.length} </h3>
+        <TableComponent data={earthObjects.asteroids}/>
+    </div>
+)
+}
+else {
           earthObjectJsx = (
             <div>
             <br/>
@@ -49,21 +121,15 @@ class Home extends Component {
             handleChange= {this.handleChange}
             />
           </div>
-
-          )
+          
+          );
+}
+   
           return (
             <div className="container">
             {earthObjectJsx}
             </div>
           )
       }
-    // return (
-    //     <div>
-    //     <h1> Welcome to your New Earth Object Finder </h1>
-
-    //     </div>
-    //   )
-    // }
 }
-
-export default Home
+export default (Home)

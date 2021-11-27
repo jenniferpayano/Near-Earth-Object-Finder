@@ -1,16 +1,43 @@
-import React, { Fragment } from "react";
-import { Route, Routes} from "react-router-dom";
+import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
 import Home from "./components/routes/Home";
+import Asteroid from "./components/shared/Asteroid"
 
-export default function App() {
+const routes = [
+  {
+    path: '/',
+    component: Home
+  },
+  {
+    path: '/asteroid',
+    component: Asteroid
+  }
+];
+function RouteWithSubRoutes(route) {
   return (
-    <div>
-      { /* Route components are rendered if the path prop matches the current URL */}
-      <Fragment>
-    <Routes>
-      <Route exact path="/" element={<Home/>}></Route>
-      </Routes>
-      </Fragment>
-    </div>
+    <Route
+      path={route.path}
+      render={props => (
+        // pass the sub-routes down to keep nesting
+        <route.component {...props} routes={route.routes} />
+      )}
+    />
   );
 }
+export default function App () {
+  return (
+    <Router>
+      <div>
+        <Switch>
+          {routes.map((route, i) => (
+            <RouteWithSubRoutes key={i} {...route} />
+          ))}
+        </Switch>
+      </div>
+    </Router>
+  );
+          }
