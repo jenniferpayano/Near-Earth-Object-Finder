@@ -1,10 +1,7 @@
 import React, { Component } from 'react'
-import { Redirect} from 'react-router-dom'
 import { earthObjectShow } from '../../api/EarthObject'
 import  UserForm  from '../shared/UserInput.js'
-//import Asteroids from '../shared/Asteroid' 
-//import { withRouter } from 'react-router'
-//import { Redirect } from 'react-router-dom'
+
 
 class Home extends Component {
     constructor () {
@@ -14,7 +11,9 @@ class Home extends Component {
           earthObjects: {
               startDate: '',
               endDate: '',
-              asteroids : []
+              asteroids : [
+              ],
+              anyasteroids: false
           }
         }
       }
@@ -40,32 +39,75 @@ class Home extends Component {
               Object.keys(neoFeedData).forEach((date)=>{
                 neoFeedData[date].forEach((asteroid) =>{
                   newAsteroids.push({
-                    name: asteroid.name,
-                    date: asteroid.close_approach_data[0].close_approach_date,
-                    diameter_in_feet: parseInt(asteroid.estimated_diameter.feet.estimated_diameter_min.toFixed(0) + asteroid.estimated_diameter.feet.estimated_diameter_max.toFixed(0) / 2 ),
-                    distance: parseInt(asteroid.close_approach_data[0].miss_distance.miles),
-                    velocity: parseInt(asteroid.close_approach_data[0].relative_velocity.miles_per_hour),
-                    hazardous: asteroid.is_potentially_hazardous_asteroid
+                    Name: asteroid.name,
+                    Date: asteroid.close_approach_data[0].close_approach_date,
+                    Diameter: parseInt(asteroid.estimated_diameter.feet.estimated_diameter_min.toFixed(0) + asteroid.estimated_diameter.feet.estimated_diameter_max.toFixed(0) / 2 ),
+                    Distance: parseInt(asteroid.close_approach_data[0].miss_distance.miles),
+                    Hazardous: asteroid.is_potentially_hazardous_asteroid.toString(),
+                    Velocity: parseInt(asteroid.close_approach_data[0].relative_velocity.miles_per_hour),
+                    
+
                   })
                 })
               })
               //console.log(newAsteroids)
               this.setState({asteroids: newAsteroids})
-            //  console.log(res.data.near_earth_objects)
-            //  this.setState({earthObjects: res.data.near_earth_objects})
+        
           })
-          .then (<Redirect to="/asteroids"/>)
           .catch (err => {
               console.log(err)
           })
       }
+      
       render () {
           const { earthObjects } = this.state
         earthObjects.asteroids = this.state.asteroids
           console.log(earthObjects);
           let earthObjectJsx 
-          
-          if(earthObjects.asteroid === undefined){
+          if(earthObjects.asteroids !== undefined){
+              earthObjects.anyasteroids = true;
+          }
+if(earthObjects.anyasteroids) {
+    const TableComponent = ({
+    data
+  }) => {
+    let headings = Object.keys(data[1]);
+    return (
+      <table className='table table-bordered'>
+        <thead>
+          <tr>
+            {
+              headings.map(heading => <th>{heading}</th>)
+            }
+          </tr>
+        </thead>
+        <tbody>
+          {
+              data.map(item => 
+                <tr>
+                 {
+                    headings.map(heading => <td>{item[heading]}</td>) 
+                 }
+                </tr>
+              )
+          }
+        </tbody>
+      </table>
+    );
+  }
+earthObjectJsx = (
+    <div>
+          <h1> New Earth Object </h1>
+            <UserForm
+            earthObjects = {earthObjects}
+            handleSubmit = {this.onSubmit}
+            handleChange= {this.handleChange}
+            />
+        <TableComponent data={earthObjects.asteroids}/>
+    </div>
+)
+}
+else {
           earthObjectJsx = (
             <div>
             <br/>
@@ -78,54 +120,13 @@ class Home extends Component {
           </div>
           
           );
-          }
-          // (
-        //     <div>
-        //   <p> Number of new earth object: {earthObjects.asteroid.length} </p>
-        //     <br/>
-        //     <Asteroids
-        //     asteroid = {earthObjects.asteroids}
-        //      />
-
-        //     { <table className="table table-striped" style= {{ marginTop: 20 }}>
-        //       <thead>
-        //         <tr>
-        //           <th> Name</th>
-        //           <th> Hazardous </th>
-        //           <th> Date </th>
-        //         </tr>
-        //       </thead>
-        //       <tbody>
-        //        {earthObjects.asteroids.map((item, i) => {
-        //            return [
-        //            <tr>
-        //             <td>
-        //           </td>
-        //           <td>{item.name}</td>
-        //           <td>{item.hazardous}</td>
-        //           <td>{item.date}</td>
-        //         </tr>,
-        //            ]
-        //         })}
-  
-        //       </tbody>
-        //     </table> }
-        //   </div>
-
-         // );
+}
+   
           return (
             <div className="container">
             {earthObjectJsx}
             </div>
           )
       }
-    // return (
-    //     <div>
-    //     <h1> Welcome to your New Earth Object Finder </h1>
-
-    //     </div>
-    //   )
-    // }
 }
-
 export default (Home)
