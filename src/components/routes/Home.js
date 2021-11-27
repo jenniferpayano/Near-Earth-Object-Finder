@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import { Redirect} from 'react-router-dom'
 import { earthObjectShow } from '../../api/EarthObject'
 import  UserForm  from '../shared/UserInput.js'
 //import Asteroids from '../shared/Asteroid' 
-import { Navigate } from 'react-router-dom'
-import { Redirect } from 'react-router-dom'
+//import { withRouter } from 'react-router'
+//import { Redirect } from 'react-router-dom'
 
 class Home extends Component {
     constructor () {
@@ -28,7 +29,9 @@ class Home extends Component {
     }
       
       onSubmit = async(event) => { 
+          
         event.preventDefault()
+    
           earthObjectShow(this.state.earthObjects)
           .then(res => {
               console.log(res.data.near_earth_objects)
@@ -48,11 +51,10 @@ class Home extends Component {
               })
               //console.log(newAsteroids)
               this.setState({asteroids: newAsteroids})
-
-        
             //  console.log(res.data.near_earth_objects)
             //  this.setState({earthObjects: res.data.near_earth_objects})
           })
+          .then (<Redirect to="/asteroids"/>)
           .catch (err => {
               console.log(err)
           })
@@ -126,4 +128,4 @@ class Home extends Component {
     // }
 }
 
-export default Home
+export default (Home)
