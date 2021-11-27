@@ -39,6 +39,8 @@ class Home extends Component {
               Object.keys(neoFeedData).forEach((date)=>{
                 neoFeedData[date].forEach((asteroid) =>{
                   newAsteroids.push({
+                    Number:newAsteroids.length+1 ,
+                    Id: asteroid.id,
                     Name: asteroid.name,
                     Date: asteroid.close_approach_data[0].close_approach_date,
                     Diameter: parseInt(asteroid.estimated_diameter.feet.estimated_diameter_min.toFixed(0) + asteroid.estimated_diameter.feet.estimated_diameter_max.toFixed(0) / 2 ),
@@ -71,7 +73,7 @@ if(earthObjects.anyasteroids) {
     const TableComponent = ({
     data
   }) => {
-    let headings = Object.keys(data[1]);
+    let headings = Object.keys(data[0]);
     return (
       <table className='table table-bordered'>
         <thead>
@@ -103,6 +105,7 @@ earthObjectJsx = (
             handleSubmit = {this.onSubmit}
             handleChange= {this.handleChange}
             />
+            <h3>Total Number of objects: {earthObjects.asteroids.length} </h3>
         <TableComponent data={earthObjects.asteroids}/>
     </div>
 )
