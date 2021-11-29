@@ -49,7 +49,7 @@ Catalog of Routes
 
 Verb         |	URI Pattern
 ------------ | -------------
-GET | /todos/feed?start_date=" + :startDate +"&end_date=" + :endDate + "&api_key=DEMO_KEY",
+GET | /neo/rest/v1/feed?start_date=" + :startDate +"&end_date=" + :endDate + "&api_key=DEMO_KEY",
 
 TECHNOLOGY
 ------------
