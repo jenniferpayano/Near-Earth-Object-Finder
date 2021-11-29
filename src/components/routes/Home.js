@@ -110,7 +110,6 @@ class Home extends Component {
         const { earthObjects } = this.state
         earthObjects.asteroids = this.state.asteroids
         let earthObjectJsx
-        // if asteroid list is not empty, set state to true 
         if(!earthObjects) {
             earthObjectJsx = <img className="loading" src="https://media.giphy.com/media/YMM6g7x45coCKdrDoj/giphy.gif" alt="loading"/>
         } else if (earthObjects.asteroids !== undefined) {
