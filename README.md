@@ -17,6 +17,7 @@ Description
 ------------
 This is a asteroid finding application user interface written in React by me [Jennifer Payano].
 I wanted to create this application to allow users to search Asteroids based on their closets approach date to earth.
+
 The goal of the application is display a list of the closets asteroids approaching earth (7 day MAX).
 
 The deployed user interface application url: https://jenniferpayano.com/Near-Earth-Object-Finder/
@@ -28,6 +29,7 @@ WIREFRAME
 
 PLANNING AND DEVELOPMENT
 ------------------------
+
 To plan this appliction, I knew that I would want to built an application that will help me get a list of objects approaching earth. Development included a table in React that meets one of the CRUD requirements (READ), in addition table will show the total number of objects that approched earth in the 7 day span. 
 
 USER STORIES
@@ -58,7 +60,9 @@ TECHNOLOGY
 
 UNSOLVED PROBLEMS
 -----------------
+
 - Table is not searchable yet, pending...
+
 
 Set Up and Installation
 -----------------------
