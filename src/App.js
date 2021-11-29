@@ -5,16 +5,11 @@ import {
   Route
 } from "react-router-dom";
 import Home from "./components/routes/Home";
-import Asteroid from "./components/shared/Asteroid"
 
 const routes = [
   {
     path: '/',
     component: Home
-  },
-  {
-    path: '/asteroid',
-    component: Asteroid
   }
 ];
 function RouteWithSubRoutes(route) {
@@ -28,7 +23,7 @@ function RouteWithSubRoutes(route) {
     />
   );
 }
-export default function App () {
+export default function App() {
   return (
     <Router>
       <div>
@@ -40,4 +35,4 @@ export default function App () {
       </div>
     </Router>
   );
-          }
+}
