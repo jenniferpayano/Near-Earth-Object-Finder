@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/Near-Earth-Object-Finder/static/css/main.9c04f68d.chunk.css",
-    "main.js": "/Near-Earth-Object-Finder/static/js/main.ad2e76a8.chunk.js",
-    "main.js.map": "/Near-Earth-Object-Finder/static/js/main.ad2e76a8.chunk.js.map",
-    "runtime-main.js": "/Near-Earth-Object-Finder/static/js/runtime-main.2ebcd311.js",
-    "runtime-main.js.map": "/Near-Earth-Object-Finder/static/js/runtime-main.2ebcd311.js.map",
-    "static/js/2.368958c4.chunk.js": "/Near-Earth-Object-Finder/static/js/2.368958c4.chunk.js",
-    "static/js/2.368958c4.chunk.js.map": "/Near-Earth-Object-Finder/static/js/2.368958c4.chunk.js.map",
-    "static/js/3.6e73efb4.chunk.js": "/Near-Earth-Object-Finder/static/js/3.6e73efb4.chunk.js",
-    "static/js/3.6e73efb4.chunk.js.map": "/Near-Earth-Object-Finder/static/js/3.6e73efb4.chunk.js.map",
-    "index.html": "/Near-Earth-Object-Finder/index.html",
-    "static/css/main.9c04f68d.chunk.css.map": "/Near-Earth-Object-Finder/static/css/main.9c04f68d.chunk.css.map",
-    "static/js/2.368958c4.chunk.js.LICENSE.txt": "/Near-Earth-Object-Finder/static/js/2.368958c4.chunk.js.LICENSE.txt"
+    "main.css": "/static/css/main.9c04f68d.chunk.css",
+    "main.js": "/static/js/main.231af4e0.chunk.js",
+    "main.js.map": "/static/js/main.231af4e0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.a1ee4df7.js",
+    "runtime-main.js.map": "/static/js/runtime-main.a1ee4df7.js.map",
+    "static/js/2.176a9a59.chunk.js": "/static/js/2.176a9a59.chunk.js",
+    "static/js/2.176a9a59.chunk.js.map": "/static/js/2.176a9a59.chunk.js.map",
+    "static/js/3.01112ee3.chunk.js": "/static/js/3.01112ee3.chunk.js",
+    "static/js/3.01112ee3.chunk.js.map": "/static/js/3.01112ee3.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.9c04f68d.chunk.css.map": "/static/css/main.9c04f68d.chunk.css.map",
+    "static/js/2.176a9a59.chunk.js.LICENSE.txt": "/static/js/2.176a9a59.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.2ebcd311.js",
-    "static/js/2.368958c4.chunk.js",
+    "static/js/runtime-main.a1ee4df7.js",
+    "static/js/2.176a9a59.chunk.js",
     "static/css/main.9c04f68d.chunk.css",
-    "static/js/main.ad2e76a8.chunk.js"
+    "static/js/main.231af4e0.chunk.js"
   ]
 }
