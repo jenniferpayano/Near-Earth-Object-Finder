@@ -1,70 +1,72 @@
-# Getting Started with Create React App
+[![Jennifer Payano logo](https://i.imgur.com/A6F7cRJ.png)](https://jenniferpayano.com)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+New Earth Object Finder
+----------------
+* Description
+* Wireframe
+* Planning and Development
+* User Stories
+* ERD
+* Catalog of Routes
+* Technology
+* Unsolved Problems
+* Set up and Installation
+* Creator
 
-## Available Scripts
+Description
+------------
+This is a asteroid finding application user interface written in React by me [Jennifer Payano].
+I wanted to create this application to allow users to search Asteroids based on their closets approach date to earth.
+The goal of the application is display a list of the closets asteroids approaching earth (7 day MAX).
 
-In the project directory, you can run:
+The deployed user interface application url: https://jenniferpayano.com/Todo-list-Client/
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+WIREFRAME
+---------
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+PLANNING AND DEVELOPMENT
+------------------------
+To plan this appliction, I knew that I would want to built an application that will help me get a list of objects approaching earth. Development included a table in React that meets one of the CRUD requirements (READ), in addition table will show the total number of objects that approched earth in the 7 day span. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+USER STORIES
+------------
+- As a user I want to enter start date and end date query into input fields
+- As a user I want to submit the start date and end date
+- As a user I want to see the total number of near earth objects
+- As a user I want to get a list of the names and whether is potentially hazardous of the near earth objects
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+ERD
+-----------------
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Catalog of Routes
+------------------
 
-### `npm run eject`
+Verb         |	URI Pattern
+------------ | -------------
+GET | /todos/feed?start_date=" + :startDate +"&end_date=" + :endDate + "&api_key=DEMO_KEY",
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+TECHNOLOGY
+------------
+- React
+- HTML
+- CSS
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+UNSOLVED PROBLEMS
+-----------------
+- Table is not searchable yet, pending...
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Set Up and Installation
+-----------------------
+- Download this template.
+- Unzip and rename the template directory (unzip ~/Downloads/near-earth-object-finder.zip).
+- Install dependencies with `npm install`.
+- Run the development server with `npm start`.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+CREATOR
+---------
+Jennifer Payano [www.linkedin.com/in/jenniferpayano]
