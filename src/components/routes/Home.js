@@ -110,8 +110,10 @@ class Home extends Component {
         const { earthObjects } = this.state
         earthObjects.asteroids = this.state.asteroids
         let earthObjectJsx
-        // if asteroid list is not empty, set state to true
-        if (earthObjects.asteroids !== undefined) {
+        // if asteroid list is not empty, set state to true 
+        if(!earthObjects) {
+            earthObjectJsx = <img className="loading" src="https://media.giphy.com/media/YMM6g7x45coCKdrDoj/giphy.gif" alt="loading"/>
+        } else if (earthObjects.asteroids !== undefined) {
             earthObjectJsx = (
                 <div>
                     <h1> New Earth Object </h1>
@@ -135,7 +137,9 @@ class Home extends Component {
                         handleSubmit={this.onSubmit}
                         handleChange={this.handleChange}
                     />
+                    <img className="loading" src="https://media.giphy.com/media/YMM6g7x45coCKdrDoj/giphy.gif" alt="loading"/>
                 </div>
+                
 
             );
         }
