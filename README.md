@@ -1,6 +1,6 @@
 [![Jennifer Payano logo](https://i.imgur.com/A6F7cRJ.png)](https://jenniferpayano.com)
 
-Task Assigner
+New Earth Object Finder
 ----------------
 * Description
 * Wireframe
@@ -15,7 +15,7 @@ Task Assigner
 
 Description
 ------------
-This is a asteroid tracking application user interface written in React by me [Jennifer Payano].
+This is a asteroid finding application user interface written in React by me [Jennifer Payano].
 I wanted to create this application to allow users to search Asteroids based on their closets approach date to earth.
 The goal of the application is display a list of the closets asteroids approaching earth.
 
