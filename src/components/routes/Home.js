@@ -116,7 +116,7 @@ class Home extends Component {
         } else if (earthObjects.asteroids !== undefined) {
             earthObjectJsx = (
                 <div>
-                    <h1> New Earth Object </h1>
+                    <h1> New Earth Object (7 DAY RANGE)</h1>
                     <UserForm
                         earthObjects={earthObjects}
                         handleSubmit={this.onSubmit}
